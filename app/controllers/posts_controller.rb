@@ -17,7 +17,7 @@ class PostsController < ApplicationController
   end
 
   def create
-  	@post = Post.new(allow)
+  	@post = current_user.posts.new(allow)
   	if @post.save
   		flash[:success] = "Success"
   		redirect_to post_path(@post)
